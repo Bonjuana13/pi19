@@ -56,7 +56,15 @@ namespace L1.WcfServiceLibrary
         [DataMember]
         public EncyclopediaPartType[] PartList { get; set; }
 
-        // TODO
+        //TODO
+
+        //Автор
+        [DataMember]
+        public string Author { get; set; }
+
+        //Год публикации
+        [DataMember]
+        public string YearOfPublication { get; set; }
     }
 
     /// <summary>
@@ -66,7 +74,7 @@ namespace L1.WcfServiceLibrary
     public class EncyclopediaPartType
     {
         /// <summary>
-        /// Список разделов энциклопедии
+        /// Список (под)разделов энциклопедии
         /// </summary>
         [DataMember]
         public EncyclopediaArticleInfoType[] ArticleInfoList { get; set; }
@@ -76,7 +84,18 @@ namespace L1.WcfServiceLibrary
         /// </summary>
         [DataMember]
         public string Folder { get; set; }
+        
         // TODO
+
+        //Описание раздела
+        [DataMember]
+        public string Description { get; set; }
+
+        //Массив полных статьей внутри раздела
+        [DataMember]
+        public EncyclopediaArticleType[] FullArticleInfoList { get; set; }
+
+
     }
 
     /// <summary>
@@ -86,6 +105,16 @@ namespace L1.WcfServiceLibrary
     public class EncyclopediaArticleInfoType
     {
         // TODO
+
+        //Название файла с краткой инфой
+        [DataMember]
+        public string ShortArticleName { get; set; }
+
+        //Тэги для быстрого поиска
+        [DataMember]
+        public string[] Tags { get; set; }
+
+
     }
 
     /// <summary>
@@ -95,5 +124,14 @@ namespace L1.WcfServiceLibrary
     public class EncyclopediaArticleType
     {
         // TODO
+
+        //Название файла, содержащего статью
+        public string NameFileWithArticle { get; set; }
+
+        //Название файла с картинкой (массив)
+        public string[] NameFileWithImg { get; set; }
+
+        //Ссылки (массив) списки литературы внешних источников
+        public string[] URLs { get; set; }
     }
 }
