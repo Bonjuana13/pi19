@@ -1,0 +1,26 @@
+{
+  "ArticleInfoList": [
+    {
+      "NameShortArticle": "Муха - это...",
+      "NameFileFullArticle": "001.json",
+      "Tags": [
+        "Мухи",
+        "Кто это"
+      ],
+      "Notes": "Здесь рассказывается, кто такие мухи,как ни странно.",
+      "Mark": 4.5
+    },
+    {
+      "NameShortArticle": "Виды мух.",
+      "NameFileFullArticle": "002.json",
+      "Tags": [
+        "Виды мух",
+        "Мухи"
+      ],
+      "Notes": "О всех видах мух в мире.",
+      "Mark": 3.0
+    }
+  ],
+  "Folder": "001",
+  "NameEncyclopediaPartType": "Кто такие эти мухи?"
+}

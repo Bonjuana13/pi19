@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="529db022-68e4-4531-99e9-29dd311ab578" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://127.0.0.1:8000/Service1/Meta" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Meta.xsd" MetadataType="Schema" ID="f7d119bc-aa37-4305-bce2-62831fbcc3d8" SourceId="1" SourceUrl="http://127.0.0.1:8000/Service1/Meta?xsd=xsd0" />
+    <MetadataFile FileName="Meta1.xsd" MetadataType="Schema" ID="c16b60fb-1b19-4f6f-8d25-7ab1e54cc351" SourceId="1" SourceUrl="http://127.0.0.1:8000/Service1/Meta?xsd=xsd3" />
+    <MetadataFile FileName="Meta2.xsd" MetadataType="Schema" ID="5bb522d6-b53f-4d1c-a975-0d474ef90e48" SourceId="1" SourceUrl="http://127.0.0.1:8000/Service1/Meta?xsd=xsd1" />
+    <MetadataFile FileName="EncyclopediaService.wsdl" MetadataType="Wsdl" ID="e2acdfb2-4cec-4e56-846b-31b1dda52dce" SourceId="1" SourceUrl="http://127.0.0.1:8000/Service1/Meta" />
+    <MetadataFile FileName="Meta3.xsd" MetadataType="Schema" ID="5754c43b-eadb-4e31-a03b-f3f428a9e215" SourceId="1" SourceUrl="http://127.0.0.1:8000/Service1/Meta?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
