@@ -34,19 +34,20 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.NameEnc_label = new System.Windows.Forms.Label();
+            this.RTBFullArticle = new System.Windows.Forms.RichTextBox();
             this.PartList_But = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.RTBFullArticle = new System.Windows.Forms.RichTextBox();
-            this.NameEnc_label = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.OpenPhoto = new System.Windows.Forms.Button();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // GetInfo
@@ -97,7 +98,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1569, 582);
+            this.tabPage1.Size = new System.Drawing.Size(1736, 582);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Тестовая";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -114,7 +115,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.OpenPhoto);
+            this.tabPage2.Controls.Add(this.dataGridView3);
             this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Controls.Add(this.NameEnc_label);
@@ -129,13 +130,53 @@
             this.tabPage2.Text = "Тест таблиц";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(863, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(371, 261);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(6, 275);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.RowTemplate.Height = 24;
+            this.dataGridView2.Size = new System.Drawing.Size(275, 301);
+            this.dataGridView2.TabIndex = 5;
+            this.dataGridView2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseDoubleClick);
+            // 
+            // NameEnc_label
+            // 
+            this.NameEnc_label.AutoSize = true;
+            this.NameEnc_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NameEnc_label.Location = new System.Drawing.Point(306, 8);
+            this.NameEnc_label.Name = "NameEnc_label";
+            this.NameEnc_label.Size = new System.Drawing.Size(0, 29);
+            this.NameEnc_label.TabIndex = 4;
+            // 
+            // RTBFullArticle
+            // 
+            this.RTBFullArticle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RTBFullArticle.Location = new System.Drawing.Point(287, 131);
+            this.RTBFullArticle.Name = "RTBFullArticle";
+            this.RTBFullArticle.ReadOnly = true;
+            this.RTBFullArticle.Size = new System.Drawing.Size(570, 445);
+            this.RTBFullArticle.TabIndex = 3;
+            this.RTBFullArticle.Text = "";
+            // 
             // PartList_But
             // 
+            this.PartList_But.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PartList_But.Location = new System.Drawing.Point(6, 6);
             this.PartList_But.Name = "PartList_But";
             this.PartList_But.Size = new System.Drawing.Size(275, 119);
             this.PartList_But.TabIndex = 1;
-            this.PartList_But.Text = "Разделы энциклопедии";
+            this.PartList_But.Text = "Открыть энциклопедию";
             this.PartList_But.UseVisualStyleBackColor = true;
             this.PartList_But.Click += new System.EventHandler(this.PartList_But_Click);
             // 
@@ -147,58 +188,20 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(275, 445);
+            this.dataGridView1.Size = new System.Drawing.Size(275, 138);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             // 
-            // RTBFullArticle
+            // dataGridView3
             // 
-            this.RTBFullArticle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RTBFullArticle.Location = new System.Drawing.Point(708, 131);
-            this.RTBFullArticle.Name = "RTBFullArticle";
-            this.RTBFullArticle.ReadOnly = true;
-            this.RTBFullArticle.Size = new System.Drawing.Size(545, 445);
-            this.RTBFullArticle.TabIndex = 3;
-            this.RTBFullArticle.Text = "";
-            // 
-            // NameEnc_label
-            // 
-            this.NameEnc_label.AutoSize = true;
-            this.NameEnc_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NameEnc_label.Location = new System.Drawing.Point(708, 8);
-            this.NameEnc_label.Name = "NameEnc_label";
-            this.NameEnc_label.Size = new System.Drawing.Size(0, 29);
-            this.NameEnc_label.TabIndex = 4;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(287, 131);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(415, 445);
-            this.dataGridView2.TabIndex = 5;
-            this.dataGridView2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseDoubleClick);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(1259, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(304, 261);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // OpenPhoto
-            // 
-            this.OpenPhoto.Location = new System.Drawing.Point(1259, 285);
-            this.OpenPhoto.Name = "OpenPhoto";
-            this.OpenPhoto.Size = new System.Drawing.Size(304, 117);
-            this.OpenPhoto.TabIndex = 7;
-            this.OpenPhoto.Text = "Картинка";
-            this.OpenPhoto.UseVisualStyleBackColor = true;
-            this.OpenPhoto.Click += new System.EventHandler(this.OpenPhoto_Click);
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(863, 275);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
+            this.dataGridView3.RowHeadersWidth = 51;
+            this.dataGridView3.RowTemplate.Height = 24;
+            this.dataGridView3.Size = new System.Drawing.Size(371, 301);
+            this.dataGridView3.TabIndex = 8;
             // 
             // Form1
             // 
@@ -214,9 +217,10 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
 
     }
@@ -234,9 +238,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.RichTextBox RTBFullArticle;
         private System.Windows.Forms.Label NameEnc_label;
-        private System.Windows.Forms.Button OpenPhoto;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridView3;
     }
 }
 

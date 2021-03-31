@@ -220,9 +220,6 @@ namespace WindowsFormsApp1.ServiceReference1 {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NotesField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] TagsField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -281,19 +278,6 @@ namespace WindowsFormsApp1.ServiceReference1 {
                 if ((object.ReferenceEquals(this.NotesField, value) != true)) {
                     this.NotesField = value;
                     this.RaisePropertyChanged("Notes");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Tags {
-            get {
-                return this.TagsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TagsField, value) != true)) {
-                    this.TagsField = value;
-                    this.RaisePropertyChanged("Tags");
                 }
             }
         }
@@ -422,34 +406,54 @@ namespace WindowsFormsApp1.ServiceReference1 {
     public interface IEncyclopediaService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/GetInfo", ReplyAction="http://tempuri.org/IEncyclopediaService/GetInfoResponse")]
-        WindowsFormsApp1.ServiceReference1.EncyclopediaType GetInfo(string curDir);
+        WindowsFormsApp1.ServiceReference1.EncyclopediaType GetInfo();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/GetInfo", ReplyAction="http://tempuri.org/IEncyclopediaService/GetInfoResponse")]
-        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceReference1.EncyclopediaType> GetInfoAsync(string curDir);
+        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceReference1.EncyclopediaType> GetInfoAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/GetPart", ReplyAction="http://tempuri.org/IEncyclopediaService/GetPartResponse")]
-        WindowsFormsApp1.ServiceReference1.EncyclopediaPartType GetPart(string sCode);
+        WindowsFormsApp1.ServiceReference1.EncyclopediaPartType GetPart(string sDirectoryCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/GetPart", ReplyAction="http://tempuri.org/IEncyclopediaService/GetPartResponse")]
-        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceReference1.EncyclopediaPartType> GetPartAsync(string sCode);
+        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceReference1.EncyclopediaPartType> GetPartAsync(string sDirectoryCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/GetArticle", ReplyAction="http://tempuri.org/IEncyclopediaService/GetArticleResponse")]
-        WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType GetArticle(string sPart, string sCode);
+        WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType GetArticle(string sDirectoryCode, string sFileNameCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/GetArticle", ReplyAction="http://tempuri.org/IEncyclopediaService/GetArticleResponse")]
-        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType> GetArticleAsync(string sPart, string sCode);
+        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType> GetArticleAsync(string sDirectoryCode, string sFileNameCode);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/Test", ReplyAction="http://tempuri.org/IEncyclopediaService/TestResponse")]
-        void Test(string sDirectory, WindowsFormsApp1.ServiceReference1.EncyclopediaType encyclopediaType, WindowsFormsApp1.ServiceReference1.EncyclopediaPartType encyclopediaPartType);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/GetImages", ReplyAction="http://tempuri.org/IEncyclopediaService/GetImagesResponse")]
+        byte[] GetImages(string sDirectoryCode, string sImgNameCode);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/Test", ReplyAction="http://tempuri.org/IEncyclopediaService/TestResponse")]
-        System.Threading.Tasks.Task TestAsync(string sDirectory, WindowsFormsApp1.ServiceReference1.EncyclopediaType encyclopediaType, WindowsFormsApp1.ServiceReference1.EncyclopediaPartType encyclopediaPartType);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/GetImages", ReplyAction="http://tempuri.org/IEncyclopediaService/GetImagesResponse")]
+        System.Threading.Tasks.Task<byte[]> GetImagesAsync(string sDirectoryCode, string sImgNameCode);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/Test2", ReplyAction="http://tempuri.org/IEncyclopediaService/Test2Response")]
-        void Test2(string sDirectory, WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType articleType);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/CreateFullArticle", ReplyAction="http://tempuri.org/IEncyclopediaService/CreateFullArticleResponse")]
+        void CreateFullArticle(string sDirectoryCode, string sNameFullAtricle, string sText, string[] sBooks, byte[][] sPictures);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/Test2", ReplyAction="http://tempuri.org/IEncyclopediaService/Test2Response")]
-        System.Threading.Tasks.Task Test2Async(string sDirectory, WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType articleType);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/CreateFullArticle", ReplyAction="http://tempuri.org/IEncyclopediaService/CreateFullArticleResponse")]
+        System.Threading.Tasks.Task CreateFullArticleAsync(string sDirectoryCode, string sNameFullAtricle, string sText, string[] sBooks, byte[][] sPictures);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/TestCreateWithoutMassiveOnlyMemory", ReplyAction="http://tempuri.org/IEncyclopediaService/TestCreateWithoutMassiveOnlyMemoryRespons" +
+            "e")]
+        void TestCreateWithoutMassiveOnlyMemory(string sDirectoryCode, string sNameFullAtricle, string sText, System.IO.MemoryStream sPictures);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/TestCreateWithoutMassiveOnlyMemory", ReplyAction="http://tempuri.org/IEncyclopediaService/TestCreateWithoutMassiveOnlyMemoryRespons" +
+            "e")]
+        System.Threading.Tasks.Task TestCreateWithoutMassiveOnlyMemoryAsync(string sDirectoryCode, string sNameFullAtricle, string sText, System.IO.MemoryStream sPictures);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/EditFullArticle", ReplyAction="http://tempuri.org/IEncyclopediaService/EditFullArticleResponse")]
+        void EditFullArticle(string sDirectoryCode, WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType createdChangedEncyclopedia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/EditFullArticle", ReplyAction="http://tempuri.org/IEncyclopediaService/EditFullArticleResponse")]
+        System.Threading.Tasks.Task EditFullArticleAsync(string sDirectoryCode, WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType createdChangedEncyclopedia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/AddPictureToServer", ReplyAction="http://tempuri.org/IEncyclopediaService/AddPictureToServerResponse")]
+        void AddPictureToServer(string sDirectoryCode, System.IO.MemoryStream sPicture);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/AddPictureToServer", ReplyAction="http://tempuri.org/IEncyclopediaService/AddPictureToServerResponse")]
+        System.Threading.Tasks.Task AddPictureToServerAsync(string sDirectoryCode, System.IO.MemoryStream sPicture);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -479,44 +483,68 @@ namespace WindowsFormsApp1.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public WindowsFormsApp1.ServiceReference1.EncyclopediaType GetInfo(string curDir) {
-            return base.Channel.GetInfo(curDir);
+        public WindowsFormsApp1.ServiceReference1.EncyclopediaType GetInfo() {
+            return base.Channel.GetInfo();
         }
         
-        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceReference1.EncyclopediaType> GetInfoAsync(string curDir) {
-            return base.Channel.GetInfoAsync(curDir);
+        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceReference1.EncyclopediaType> GetInfoAsync() {
+            return base.Channel.GetInfoAsync();
         }
         
-        public WindowsFormsApp1.ServiceReference1.EncyclopediaPartType GetPart(string sCode) {
-            return base.Channel.GetPart(sCode);
+        public WindowsFormsApp1.ServiceReference1.EncyclopediaPartType GetPart(string sDirectoryCode) {
+            return base.Channel.GetPart(sDirectoryCode);
         }
         
-        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceReference1.EncyclopediaPartType> GetPartAsync(string sCode) {
-            return base.Channel.GetPartAsync(sCode);
+        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceReference1.EncyclopediaPartType> GetPartAsync(string sDirectoryCode) {
+            return base.Channel.GetPartAsync(sDirectoryCode);
         }
         
-        public WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType GetArticle(string sPart, string sCode) {
-            return base.Channel.GetArticle(sPart, sCode);
+        public WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType GetArticle(string sDirectoryCode, string sFileNameCode) {
+            return base.Channel.GetArticle(sDirectoryCode, sFileNameCode);
         }
         
-        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType> GetArticleAsync(string sPart, string sCode) {
-            return base.Channel.GetArticleAsync(sPart, sCode);
+        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType> GetArticleAsync(string sDirectoryCode, string sFileNameCode) {
+            return base.Channel.GetArticleAsync(sDirectoryCode, sFileNameCode);
         }
         
-        public void Test(string sDirectory, WindowsFormsApp1.ServiceReference1.EncyclopediaType encyclopediaType, WindowsFormsApp1.ServiceReference1.EncyclopediaPartType encyclopediaPartType) {
-            base.Channel.Test(sDirectory, encyclopediaType, encyclopediaPartType);
+        public byte[] GetImages(string sDirectoryCode, string sImgNameCode) {
+            return base.Channel.GetImages(sDirectoryCode, sImgNameCode);
         }
         
-        public System.Threading.Tasks.Task TestAsync(string sDirectory, WindowsFormsApp1.ServiceReference1.EncyclopediaType encyclopediaType, WindowsFormsApp1.ServiceReference1.EncyclopediaPartType encyclopediaPartType) {
-            return base.Channel.TestAsync(sDirectory, encyclopediaType, encyclopediaPartType);
+        public System.Threading.Tasks.Task<byte[]> GetImagesAsync(string sDirectoryCode, string sImgNameCode) {
+            return base.Channel.GetImagesAsync(sDirectoryCode, sImgNameCode);
         }
         
-        public void Test2(string sDirectory, WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType articleType) {
-            base.Channel.Test2(sDirectory, articleType);
+        public void CreateFullArticle(string sDirectoryCode, string sNameFullAtricle, string sText, string[] sBooks, byte[][] sPictures) {
+            base.Channel.CreateFullArticle(sDirectoryCode, sNameFullAtricle, sText, sBooks, sPictures);
         }
         
-        public System.Threading.Tasks.Task Test2Async(string sDirectory, WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType articleType) {
-            return base.Channel.Test2Async(sDirectory, articleType);
+        public System.Threading.Tasks.Task CreateFullArticleAsync(string sDirectoryCode, string sNameFullAtricle, string sText, string[] sBooks, byte[][] sPictures) {
+            return base.Channel.CreateFullArticleAsync(sDirectoryCode, sNameFullAtricle, sText, sBooks, sPictures);
+        }
+        
+        public void TestCreateWithoutMassiveOnlyMemory(string sDirectoryCode, string sNameFullAtricle, string sText, System.IO.MemoryStream sPictures) {
+            base.Channel.TestCreateWithoutMassiveOnlyMemory(sDirectoryCode, sNameFullAtricle, sText, sPictures);
+        }
+        
+        public System.Threading.Tasks.Task TestCreateWithoutMassiveOnlyMemoryAsync(string sDirectoryCode, string sNameFullAtricle, string sText, System.IO.MemoryStream sPictures) {
+            return base.Channel.TestCreateWithoutMassiveOnlyMemoryAsync(sDirectoryCode, sNameFullAtricle, sText, sPictures);
+        }
+        
+        public void EditFullArticle(string sDirectoryCode, WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType createdChangedEncyclopedia) {
+            base.Channel.EditFullArticle(sDirectoryCode, createdChangedEncyclopedia);
+        }
+        
+        public System.Threading.Tasks.Task EditFullArticleAsync(string sDirectoryCode, WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType createdChangedEncyclopedia) {
+            return base.Channel.EditFullArticleAsync(sDirectoryCode, createdChangedEncyclopedia);
+        }
+        
+        public void AddPictureToServer(string sDirectoryCode, System.IO.MemoryStream sPicture) {
+            base.Channel.AddPictureToServer(sDirectoryCode, sPicture);
+        }
+        
+        public System.Threading.Tasks.Task AddPictureToServerAsync(string sDirectoryCode, System.IO.MemoryStream sPicture) {
+            return base.Channel.AddPictureToServerAsync(sDirectoryCode, sPicture);
         }
     }
 }

@@ -6,6 +6,8 @@
       <xsd:import schemaLocation="http://127.0.0.1:8000/Service1/Meta?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://127.0.0.1:8000/Service1/Meta?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/L1.WcfServiceLibrary" />
       <xsd:import schemaLocation="http://127.0.0.1:8000/Service1/Meta?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://127.0.0.1:8000/Service1/Meta?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.IO" />
+      <xsd:import schemaLocation="http://127.0.0.1:8000/Service1/Meta?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IEncyclopediaService_GetInfo_InputMessage">
@@ -26,17 +28,35 @@
   <wsdl:message name="IEncyclopediaService_GetArticle_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetArticleResponse" />
   </wsdl:message>
-  <wsdl:message name="IEncyclopediaService_Test_InputMessage">
-    <wsdl:part name="parameters" element="tns:Test" />
+  <wsdl:message name="IEncyclopediaService_GetImages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImages" />
   </wsdl:message>
-  <wsdl:message name="IEncyclopediaService_Test_OutputMessage">
-    <wsdl:part name="parameters" element="tns:TestResponse" />
+  <wsdl:message name="IEncyclopediaService_GetImages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImagesResponse" />
   </wsdl:message>
-  <wsdl:message name="IEncyclopediaService_Test2_InputMessage">
-    <wsdl:part name="parameters" element="tns:Test2" />
+  <wsdl:message name="IEncyclopediaService_CreateFullArticle_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFullArticle" />
   </wsdl:message>
-  <wsdl:message name="IEncyclopediaService_Test2_OutputMessage">
-    <wsdl:part name="parameters" element="tns:Test2Response" />
+  <wsdl:message name="IEncyclopediaService_CreateFullArticle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFullArticleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEncyclopediaService_TestCreateWithoutMassiveOnlyMemory_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestCreateWithoutMassiveOnlyMemory" />
+  </wsdl:message>
+  <wsdl:message name="IEncyclopediaService_TestCreateWithoutMassiveOnlyMemory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestCreateWithoutMassiveOnlyMemoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEncyclopediaService_EditFullArticle_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditFullArticle" />
+  </wsdl:message>
+  <wsdl:message name="IEncyclopediaService_EditFullArticle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditFullArticleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEncyclopediaService_AddPictureToServer_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPictureToServer" />
+  </wsdl:message>
+  <wsdl:message name="IEncyclopediaService_AddPictureToServer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPictureToServerResponse" />
   </wsdl:message>
   <wsdl:portType name="IEncyclopediaService">
     <wsdl:operation name="GetInfo">
@@ -51,13 +71,25 @@
       <wsdl:input wsam:Action="http://tempuri.org/IEncyclopediaService/GetArticle" message="tns:IEncyclopediaService_GetArticle_InputMessage" />
       <wsdl:output wsam:Action="http://tempuri.org/IEncyclopediaService/GetArticleResponse" message="tns:IEncyclopediaService_GetArticle_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Test">
-      <wsdl:input wsam:Action="http://tempuri.org/IEncyclopediaService/Test" message="tns:IEncyclopediaService_Test_InputMessage" />
-      <wsdl:output wsam:Action="http://tempuri.org/IEncyclopediaService/TestResponse" message="tns:IEncyclopediaService_Test_OutputMessage" />
+    <wsdl:operation name="GetImages">
+      <wsdl:input wsam:Action="http://tempuri.org/IEncyclopediaService/GetImages" message="tns:IEncyclopediaService_GetImages_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEncyclopediaService/GetImagesResponse" message="tns:IEncyclopediaService_GetImages_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Test2">
-      <wsdl:input wsam:Action="http://tempuri.org/IEncyclopediaService/Test2" message="tns:IEncyclopediaService_Test2_InputMessage" />
-      <wsdl:output wsam:Action="http://tempuri.org/IEncyclopediaService/Test2Response" message="tns:IEncyclopediaService_Test2_OutputMessage" />
+    <wsdl:operation name="CreateFullArticle">
+      <wsdl:input wsam:Action="http://tempuri.org/IEncyclopediaService/CreateFullArticle" message="tns:IEncyclopediaService_CreateFullArticle_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEncyclopediaService/CreateFullArticleResponse" message="tns:IEncyclopediaService_CreateFullArticle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestCreateWithoutMassiveOnlyMemory">
+      <wsdl:input wsam:Action="http://tempuri.org/IEncyclopediaService/TestCreateWithoutMassiveOnlyMemory" message="tns:IEncyclopediaService_TestCreateWithoutMassiveOnlyMemory_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEncyclopediaService/TestCreateWithoutMassiveOnlyMemoryResponse" message="tns:IEncyclopediaService_TestCreateWithoutMassiveOnlyMemory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditFullArticle">
+      <wsdl:input wsam:Action="http://tempuri.org/IEncyclopediaService/EditFullArticle" message="tns:IEncyclopediaService_EditFullArticle_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEncyclopediaService/EditFullArticleResponse" message="tns:IEncyclopediaService_EditFullArticle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPictureToServer">
+      <wsdl:input wsam:Action="http://tempuri.org/IEncyclopediaService/AddPictureToServer" message="tns:IEncyclopediaService_AddPictureToServer_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEncyclopediaService/AddPictureToServerResponse" message="tns:IEncyclopediaService_AddPictureToServer_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IEncyclopediaService" type="tns:IEncyclopediaService">
@@ -89,8 +121,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Test">
-      <soap:operation soapAction="http://tempuri.org/IEncyclopediaService/Test" style="document" />
+    <wsdl:operation name="GetImages">
+      <soap:operation soapAction="http://tempuri.org/IEncyclopediaService/GetImages" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -98,8 +130,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Test2">
-      <soap:operation soapAction="http://tempuri.org/IEncyclopediaService/Test2" style="document" />
+    <wsdl:operation name="CreateFullArticle">
+      <soap:operation soapAction="http://tempuri.org/IEncyclopediaService/CreateFullArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestCreateWithoutMassiveOnlyMemory">
+      <soap:operation soapAction="http://tempuri.org/IEncyclopediaService/TestCreateWithoutMassiveOnlyMemory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditFullArticle">
+      <soap:operation soapAction="http://tempuri.org/IEncyclopediaService/EditFullArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPictureToServer">
+      <soap:operation soapAction="http://tempuri.org/IEncyclopediaService/AddPictureToServer" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

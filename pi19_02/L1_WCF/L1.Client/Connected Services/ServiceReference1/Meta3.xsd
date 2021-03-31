@@ -37,17 +37,16 @@
       <xs:element minOccurs="0" name="NameFileFullArticle" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NameShortArticle" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Tags" nillable="true" type="q1:ArrayOfstring" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="EncyclopediaArticleInfoType" nillable="true" type="tns:EncyclopediaArticleInfoType" />
   <xs:complexType name="EncyclopediaArticleType">
     <xs:sequence>
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Books" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Books" nillable="true" type="q1:ArrayOfstring" />
       <xs:element minOccurs="0" name="MainArticleText" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NameArticle" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NameFileWithArticle" nillable="true" type="xs:string" />
-      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NameFileWithImg" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NameFileWithImg" nillable="true" type="q2:ArrayOfstring" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="EncyclopediaArticleType" nillable="true" type="tns:EncyclopediaArticleType" />

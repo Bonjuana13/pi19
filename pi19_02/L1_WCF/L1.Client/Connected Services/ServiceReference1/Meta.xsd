@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://127.0.0.1:8000/Service1/Meta?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/L1.WcfServiceLibrary" />
+  <xs:import schemaLocation="http://127.0.0.1:8000/Service1/Meta?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://127.0.0.1:8000/Service1/Meta?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.IO" />
   <xs:element name="GetInfo">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="curDir" nillable="true" type="xs:string" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="GetInfoResponse">
@@ -18,7 +18,7 @@
   <xs:element name="GetPart">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="sCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sDirectoryCode" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -32,8 +32,8 @@
   <xs:element name="GetArticle">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="sPart" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="sCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sDirectoryCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sFileNameCode" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -44,29 +44,74 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Test">
+  <xs:element name="GetImages">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="sDirectory" nillable="true" type="xs:string" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/L1.WcfServiceLibrary" minOccurs="0" name="encyclopediaType" nillable="true" type="q4:EncyclopediaType" />
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/L1.WcfServiceLibrary" minOccurs="0" name="encyclopediaPartType" nillable="true" type="q5:EncyclopediaPartType" />
+        <xs:element minOccurs="0" name="sDirectoryCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sImgNameCode" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="TestResponse">
+  <xs:element name="GetImagesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetImagesResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFullArticle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sDirectoryCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sNameFullAtricle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sText" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="sBooks" nillable="true" type="q4:ArrayOfstring" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="sPictures" nillable="true" type="q5:ArrayOfbase64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFullArticleResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="Test2">
+  <xs:element name="TestCreateWithoutMassiveOnlyMemory">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="sDirectory" nillable="true" type="xs:string" />
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/L1.WcfServiceLibrary" minOccurs="0" name="articleType" nillable="true" type="q6:EncyclopediaArticleType" />
+        <xs:element minOccurs="0" name="sDirectoryCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sNameFullAtricle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sText" nillable="true" type="xs:string" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System.IO" minOccurs="0" name="sPictures" nillable="true" type="q6:MemoryStream" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Test2Response">
+  <xs:element name="TestCreateWithoutMassiveOnlyMemoryResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditFullArticle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sDirectoryCode" nillable="true" type="xs:string" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/L1.WcfServiceLibrary" minOccurs="0" name="createdChangedEncyclopedia" nillable="true" type="q7:EncyclopediaArticleType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditFullArticleResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPictureToServer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sDirectoryCode" nillable="true" type="xs:string" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/System.IO" minOccurs="0" name="sPicture" nillable="true" type="q8:MemoryStream" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPictureToServerResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
