@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
             //Увеличение количества возможных байтов для отправки
             ServicePointManager.CheckCertificateRevocationList = false;
             pBinding.MaxReceivedMessageSize = int.MaxValue;
-            //pBinding.Name = "BasicHttpBinding_IEncyclopediaService";
+            pBinding.Name = "BasicHttpBinding_IEncyclopediaService";
             pBinding.ReaderQuotas = XmlDictionaryReaderQuotas.Max;
             //pBinding.ReceiveTimeout = new TimeSpan(0, 3, 0);
             //pBinding.SendTimeout = new TimeSpan(0, 3, 0);
@@ -260,7 +260,7 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void dataGridView3_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dataGridView3_CellMouseDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -396,5 +396,7 @@ namespace WindowsFormsApp1
                 addImage.Save(@"C:\Users\bonju\Desktop\study\2 курс\pi19\pi19_02\L1_WCF\Bibl2test\002\" + maxPictureId.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             }*/
         }
+
+
     }
 }
