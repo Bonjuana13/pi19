@@ -1,15 +1,12 @@
 ﻿using L1.WcfServiceLibrary;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.ServiceModel;
 using System.ServiceModel.Description;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace L1.Server
 {
@@ -27,6 +24,10 @@ namespace L1.Server
             string sUrlServiceMeta = "http://127.0.0.1:8000/Service1/Meta";
             //Привязка для основного сервиса
             BasicHttpBinding pBinding = new BasicHttpBinding();
+            ServicePointManager.CheckCertificateRevocationList = false;
+            pBinding.MaxReceivedMessageSize = int.MaxValue;
+            pBinding.Name = "BasicHttpBinding";
+            pBinding.ReaderQuotas = XmlDictionaryReaderQuotas.Max;
             pBinding.Security.Transport.ClientCredentialType =
             HttpClientCredentialType.None;
             pBinding.Security.Mode = BasicHttpSecurityMode.None;

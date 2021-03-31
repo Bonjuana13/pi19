@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
 
 namespace L1.WcfServiceLibrary
 {
@@ -18,42 +17,66 @@ namespace L1.WcfServiceLibrary
         /// </summary>
         /// <returns></returns>
         [OperationContract]
-        EncyclopediaType GetInfo(string curDir);
+        EncyclopediaType GetInfo();
 
         /// <summary>
         /// Получить информацию по разделу энциклопедии
         /// </summary>
-        /// <param name="sCode"></param>
+        /// <param name="sDirectoryCode"></param>
         /// <returns></returns>
         [OperationContract]
-        EncyclopediaPartType GetPart(string sCode); //папка
+        EncyclopediaPartType GetPart(string sDirectoryCode); //папка
 
         /// <summary>
         /// Получить полную словарную статью
         /// </summary>
-        /// <param name="sPart"></param>
-        /// <param name="sCode"></param>
+        /// <param name="sDirectoryCode"></param>
+        /// <param name="sFileNameCode"></param>
         /// <returns></returns>
         [OperationContract]
-        EncyclopediaArticleType GetArticle(string sPart, string sCode); //полная статья файл
+        EncyclopediaArticleType GetArticle(string sDirectoryCode, string sFileNameCode); //полная статья файл
 
         /// <summary>
-        /// Сериализовать
+        /// Картинки
         /// </summary>
-        /// <param name="sPart"></param>
-        /// <param name="sCode"></param>
+        /// <param name="sDirectoryCode"></param>
+        /// <param name="sFileNameCode"></param>
         /// <returns></returns>
         [OperationContract]
-        void Test(string sDirectory, EncyclopediaType encyclopediaType, EncyclopediaPartType encyclopediaPartType);
+        byte[] GetImages(string sDirectoryCode, string sImgNameCode);
 
         /// <summary>
-        /// Сериализовать статью
+        /// Сохранение полной статьи
         /// </summary>
-        /// <param name="sPart"></param>
-        /// <param name="sCode"></param>
-        /// <returns></returns>
+        /// <param name="sDirectoryCode"></param>
+        /// <param name="sNameFullAtricle"></param>
+        /// <param name="sText"></param>
+        /// <param name="sBooks"></param>
+        /// <param name="sPictures"></param>
         [OperationContract]
-        void Test2(string sDirectory, EncyclopediaArticleType articleType);
+        void CreateFullArticle(string sDirectoryCode, string sNameFullAtricle, string sText, string[] sBooks, List<byte[]> sPictures);
+
+        /// <summary>
+        /// Test
+        /// </summary>
+        /// <param name="sDirectoryCode"></param>
+        /// <param name="sNameFullAtricle"></param>
+        /// <param name="sText"></param>
+        /// <param name="sBooks"></param>
+        /// <param name="sPictures"></param>
+        [OperationContract]
+        void TestCreateWithoutMassiveOnlyMemory(string sDirectoryCode, string sNameFullAtricle, string sText, MemoryStream sPictures);
+
+        /// <summary>
+        /// Изменение полной статьи
+        /// </summary>
+        /// <param name="sDirectoryCode"></param>
+        /// <param name="changedEncyclopedia"></param>
+        [OperationContract]
+        void EditFullArticle(string sDirectoryCode, EncyclopediaArticleType createdChangedEncyclopedia);
+
+        [OperationContract]
+        void AddPictureToServer(string sDirectoryCode, MemoryStream sPicture);
     }
 
     /// <summary>
@@ -125,12 +148,6 @@ namespace L1.WcfServiceLibrary
     [DataContract]
     public class EncyclopediaArticleInfoType
     {
-        /*        /// <summary>
-                /// Название файла с краткой инфой
-                /// </summary>
-                [DataMember]
-                public string ShortArticleName { get; set; }*/
-
         /// <summary>
         /// Название статьи
         /// </summary>
@@ -142,12 +159,6 @@ namespace L1.WcfServiceLibrary
         /// </summary>
         [DataMember]
         public string NameFileFullArticle { get; set; }
-
-        /// <summary>
-        /// Ключевые слова
-        /// </summary>
-        [DataMember]
-        public string[] Tags { get; set; }
 
         /// <summary>
         /// Краткое описание статьи
