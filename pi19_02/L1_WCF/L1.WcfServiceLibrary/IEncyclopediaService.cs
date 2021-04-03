@@ -77,6 +77,12 @@ namespace L1.WcfServiceLibrary
 
         [OperationContract]
         void AddPictureToServer(string sDirectoryCode, MemoryStream sPicture);
+
+        [OperationContract]
+        void SaveImage(string sUrl);
+
+        [OperationContract]
+        void SaveNewImage(string sDirectory, string sFullArticleCode, byte[] sImage);
     }
 
     /// <summary>

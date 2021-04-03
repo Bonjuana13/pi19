@@ -58,6 +58,18 @@
   <wsdl:message name="IEncyclopediaService_AddPictureToServer_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddPictureToServerResponse" />
   </wsdl:message>
+  <wsdl:message name="IEncyclopediaService_SaveImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImage" />
+  </wsdl:message>
+  <wsdl:message name="IEncyclopediaService_SaveImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEncyclopediaService_SaveNewImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveNewImage" />
+  </wsdl:message>
+  <wsdl:message name="IEncyclopediaService_SaveNewImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveNewImageResponse" />
+  </wsdl:message>
   <wsdl:portType name="IEncyclopediaService">
     <wsdl:operation name="GetInfo">
       <wsdl:input wsam:Action="http://tempuri.org/IEncyclopediaService/GetInfo" message="tns:IEncyclopediaService_GetInfo_InputMessage" />
@@ -90,6 +102,14 @@
     <wsdl:operation name="AddPictureToServer">
       <wsdl:input wsam:Action="http://tempuri.org/IEncyclopediaService/AddPictureToServer" message="tns:IEncyclopediaService_AddPictureToServer_InputMessage" />
       <wsdl:output wsam:Action="http://tempuri.org/IEncyclopediaService/AddPictureToServerResponse" message="tns:IEncyclopediaService_AddPictureToServer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveImage">
+      <wsdl:input wsam:Action="http://tempuri.org/IEncyclopediaService/SaveImage" message="tns:IEncyclopediaService_SaveImage_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEncyclopediaService/SaveImageResponse" message="tns:IEncyclopediaService_SaveImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveNewImage">
+      <wsdl:input wsam:Action="http://tempuri.org/IEncyclopediaService/SaveNewImage" message="tns:IEncyclopediaService_SaveNewImage_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEncyclopediaService/SaveNewImageResponse" message="tns:IEncyclopediaService_SaveNewImage_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IEncyclopediaService" type="tns:IEncyclopediaService">
@@ -159,6 +179,24 @@
     </wsdl:operation>
     <wsdl:operation name="AddPictureToServer">
       <soap:operation soapAction="http://tempuri.org/IEncyclopediaService/AddPictureToServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveImage">
+      <soap:operation soapAction="http://tempuri.org/IEncyclopediaService/SaveImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveNewImage">
+      <soap:operation soapAction="http://tempuri.org/IEncyclopediaService/SaveNewImage" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -45,6 +45,8 @@
             this.RTBFullArticle = new System.Windows.Forms.RichTextBox();
             this.PartList_But = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.SendPicture_But = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -119,6 +121,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.SendPicture_But);
+            this.tabPage2.Controls.Add(this.textBox2);
             this.tabPage2.Controls.Add(this.EditFullArticle_But);
             this.tabPage2.Controls.Add(this.textBox1);
             this.tabPage2.Controls.Add(this.richTextBox2);
@@ -253,6 +257,25 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox2.Location = new System.Drawing.Point(1215, 520);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(526, 34);
+            this.textBox2.TabIndex = 13;
+            // 
+            // SendPicture_But
+            // 
+            this.SendPicture_But.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SendPicture_But.Location = new System.Drawing.Point(1346, 475);
+            this.SendPicture_But.Name = "SendPicture_But";
+            this.SendPicture_But.Size = new System.Drawing.Size(281, 39);
+            this.SendPicture_But.TabIndex = 14;
+            this.SendPicture_But.Text = "Send";
+            this.SendPicture_But.UseVisualStyleBackColor = true;
+            this.SendPicture_But.Click += new System.EventHandler(this.SendPicture_But_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -295,6 +318,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button EditFullArticle_But;
+        private System.Windows.Forms.Button SendPicture_But;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 

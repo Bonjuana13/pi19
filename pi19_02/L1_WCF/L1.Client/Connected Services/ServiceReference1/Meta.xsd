@@ -119,4 +119,30 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="SaveImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sUrl" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveImageResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveNewImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sDirectory" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sFullArticleCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sImage" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveNewImageResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

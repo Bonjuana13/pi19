@@ -454,6 +454,18 @@ namespace WindowsFormsApp1.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/AddPictureToServer", ReplyAction="http://tempuri.org/IEncyclopediaService/AddPictureToServerResponse")]
         System.Threading.Tasks.Task AddPictureToServerAsync(string sDirectoryCode, System.IO.MemoryStream sPicture);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/SaveImage", ReplyAction="http://tempuri.org/IEncyclopediaService/SaveImageResponse")]
+        void SaveImage(string sUrl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/SaveImage", ReplyAction="http://tempuri.org/IEncyclopediaService/SaveImageResponse")]
+        System.Threading.Tasks.Task SaveImageAsync(string sUrl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/SaveNewImage", ReplyAction="http://tempuri.org/IEncyclopediaService/SaveNewImageResponse")]
+        void SaveNewImage(string sDirectory, string sFullArticleCode, byte[] sImage);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/SaveNewImage", ReplyAction="http://tempuri.org/IEncyclopediaService/SaveNewImageResponse")]
+        System.Threading.Tasks.Task SaveNewImageAsync(string sDirectory, string sFullArticleCode, byte[] sImage);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -545,6 +557,22 @@ namespace WindowsFormsApp1.ServiceReference1 {
         
         public System.Threading.Tasks.Task AddPictureToServerAsync(string sDirectoryCode, System.IO.MemoryStream sPicture) {
             return base.Channel.AddPictureToServerAsync(sDirectoryCode, sPicture);
+        }
+        
+        public void SaveImage(string sUrl) {
+            base.Channel.SaveImage(sUrl);
+        }
+        
+        public System.Threading.Tasks.Task SaveImageAsync(string sUrl) {
+            return base.Channel.SaveImageAsync(sUrl);
+        }
+        
+        public void SaveNewImage(string sDirectory, string sFullArticleCode, byte[] sImage) {
+            base.Channel.SaveNewImage(sDirectory, sFullArticleCode, sImage);
+        }
+        
+        public System.Threading.Tasks.Task SaveNewImageAsync(string sDirectory, string sFullArticleCode, byte[] sImage) {
+            return base.Channel.SaveNewImageAsync(sDirectory, sFullArticleCode, sImage);
         }
     }
 }

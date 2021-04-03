@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Net;
 using L1.WcfServiceLibrary.Manager;
 
 namespace L1.WcfServiceLibrary
@@ -232,6 +233,51 @@ namespace L1.WcfServiceLibrary
             encyclopediaArticleType.Books = sBooks;
             //сохраняем новую статью
             pManager.Save(Path.Combine(MainStartFolder, sDirectoryCode), encyclopediaArticleType);
+        }
+
+        public void SaveImage(string sUrl)
+        {
+            using (WebClient wClient = new WebClient())
+            {
+                byte[] imageByte = wClient.DownloadData(sUrl);
+                using (MemoryStream ms = new MemoryStream(imageByte, 0, imageByte.Length))
+                {
+                    //wClient.DownloadFile
+                    //img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    //stream.Close();
+                    //ms.Write(imageByte, 0, imageByte.Length);
+                    //pictureBox1.Image = Image.FromStream(ms, true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Отправить фотку на сервер
+        /// </summary>
+        /// <param name="sDirectory"></param>
+        /// <param name="sFullArticleCode"></param>
+        /// <param name="sImage"></param>
+        public void SaveNewImage(string sDirectory, string sFullArticleCode, byte[] sImage)
+        {
+            using (MemoryStream ms = new MemoryStream(sImage))
+            {
+                using (Image img = Image.FromStream(ms))
+                {
+                    //вычисление последней существующей фотки в директории
+                    DirectoryInfo directoryInfo = new DirectoryInfo(Path.Combine(MainStartFolder, sDirectory));
+                    //максимальное айди картинки, чтобы создать еще одну
+                    int maxPictureId = 0;
+
+                    foreach (var item in directoryInfo.GetFiles())
+                    {
+                        if (item.Name.Substring(item.Name.Length - 4) == ".jpg" && Convert.ToInt32(item.Name.Substring(0, item.Name.Length - 4)) > maxPictureId)
+                        {
+                            maxPictureId = Convert.ToInt32(item.Name.Substring(0, item.Name.Length - 4));
+                        }
+                    }
+                    img.Save(Path.Combine(MainStartFolder, sDirectory, (maxPictureId + 1).ToString() + ".jpg"));
+                }
+            }
         }
     }
 }

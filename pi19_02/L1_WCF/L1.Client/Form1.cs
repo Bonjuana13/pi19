@@ -467,5 +467,25 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Что-то явно пошло не по плану.", "Упс...", MessageBoxButtons.OK);
             }
         }
+
+        /// <summary>
+        /// Отправить картинку по Url
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SendPicture_But_Click(object sender, EventArgs e)
+        {
+            Image img = Image.FromFile(textBox2.Text);
+            byte[] byteArray = new byte[1000000];
+            using (MemoryStream stream = new MemoryStream())
+            {
+                img.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                byteArray = stream.ToArray();
+                stream.Close();
+            }
+
+            GetClient().SaveNewImage(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString(),
+                    dataGridView2["NameFileFullArticle", dataGridView2.CurrentRow.Index].Value.ToString(), byteArray);
+        }
     }
 }
