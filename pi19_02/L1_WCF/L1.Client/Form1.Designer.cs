@@ -34,6 +34,10 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.EditFullArticle_But = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.WantToChangeFullArticle = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -86,7 +90,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1744, 611);
+            this.tabControl1.Size = new System.Drawing.Size(1858, 611);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -98,7 +102,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1736, 582);
+            this.tabPage1.Size = new System.Drawing.Size(1850, 582);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Тестовая";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -115,6 +119,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.EditFullArticle_But);
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.richTextBox2);
+            this.tabPage2.Controls.Add(this.WantToChangeFullArticle);
             this.tabPage2.Controls.Add(this.dataGridView3);
             this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.dataGridView2);
@@ -125,28 +133,69 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1736, 582);
+            this.tabPage2.Size = new System.Drawing.Size(1850, 582);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Тест таблиц";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // EditFullArticle_But
+            // 
+            this.EditFullArticle_But.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EditFullArticle_But.Location = new System.Drawing.Point(1550, 8);
+            this.EditFullArticle_But.Name = "EditFullArticle_But";
+            this.EditFullArticle_But.Size = new System.Drawing.Size(275, 119);
+            this.EditFullArticle_But.TabIndex = 12;
+            this.EditFullArticle_But.Text = "Сохранить изменения";
+            this.EditFullArticle_But.UseVisualStyleBackColor = true;
+            this.EditFullArticle_But.Click += new System.EventHandler(this.EditFullArticle_But_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(287, 8);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(526, 34);
+            this.textBox1.TabIndex = 11;
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.richTextBox2.Location = new System.Drawing.Point(287, 48);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ReadOnly = true;
+            this.richTextBox2.Size = new System.Drawing.Size(526, 117);
+            this.richTextBox2.TabIndex = 10;
+            this.richTextBox2.Text = "";
+            // 
+            // WantToChangeFullArticle
+            // 
+            this.WantToChangeFullArticle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WantToChangeFullArticle.Location = new System.Drawing.Point(1180, 8);
+            this.WantToChangeFullArticle.Name = "WantToChangeFullArticle";
+            this.WantToChangeFullArticle.Size = new System.Drawing.Size(275, 119);
+            this.WantToChangeFullArticle.TabIndex = 9;
+            this.WantToChangeFullArticle.Text = "Хочу изменить статью";
+            this.WantToChangeFullArticle.UseVisualStyleBackColor = true;
+            this.WantToChangeFullArticle.Click += new System.EventHandler(this.WantToChangeFullArticle_Click);
+            // 
             // dataGridView3
             // 
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(863, 275);
+            this.dataGridView3.Location = new System.Drawing.Point(819, 275);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(371, 301);
+            this.dataGridView3.Size = new System.Drawing.Size(355, 301);
             this.dataGridView3.TabIndex = 8;
             this.dataGridView3.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellMouseDoubleClick);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(863, 8);
+            this.pictureBox1.Location = new System.Drawing.Point(819, 8);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(371, 261);
+            this.pictureBox1.Size = new System.Drawing.Size(355, 261);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
@@ -166,7 +215,7 @@
             // 
             this.NameEnc_label.AutoSize = true;
             this.NameEnc_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NameEnc_label.Location = new System.Drawing.Point(306, 8);
+            this.NameEnc_label.Location = new System.Drawing.Point(1210, 285);
             this.NameEnc_label.Name = "NameEnc_label";
             this.NameEnc_label.Size = new System.Drawing.Size(0, 29);
             this.NameEnc_label.TabIndex = 4;
@@ -174,10 +223,10 @@
             // RTBFullArticle
             // 
             this.RTBFullArticle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RTBFullArticle.Location = new System.Drawing.Point(287, 131);
+            this.RTBFullArticle.Location = new System.Drawing.Point(287, 171);
             this.RTBFullArticle.Name = "RTBFullArticle";
             this.RTBFullArticle.ReadOnly = true;
-            this.RTBFullArticle.Size = new System.Drawing.Size(570, 445);
+            this.RTBFullArticle.Size = new System.Drawing.Size(526, 405);
             this.RTBFullArticle.TabIndex = 3;
             this.RTBFullArticle.Text = "";
             // 
@@ -208,7 +257,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1768, 628);
+            this.ClientSize = new System.Drawing.Size(1882, 628);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
@@ -242,6 +291,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Button WantToChangeFullArticle;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Button EditFullArticle_But;
     }
 }
 

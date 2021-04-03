@@ -444,10 +444,10 @@ namespace WindowsFormsApp1.ServiceReference1 {
         System.Threading.Tasks.Task TestCreateWithoutMassiveOnlyMemoryAsync(string sDirectoryCode, string sNameFullAtricle, string sText, System.IO.MemoryStream sPictures);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/EditFullArticle", ReplyAction="http://tempuri.org/IEncyclopediaService/EditFullArticleResponse")]
-        void EditFullArticle(string sDirectoryCode, WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType createdChangedEncyclopedia);
+        void EditFullArticle(string sDirectoryCode, string sFullArtocleCode, string sFullArticleName, string sFullArticleText, string[] sBooks);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/EditFullArticle", ReplyAction="http://tempuri.org/IEncyclopediaService/EditFullArticleResponse")]
-        System.Threading.Tasks.Task EditFullArticleAsync(string sDirectoryCode, WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType createdChangedEncyclopedia);
+        System.Threading.Tasks.Task EditFullArticleAsync(string sDirectoryCode, string sFullArtocleCode, string sFullArticleName, string sFullArticleText, string[] sBooks);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncyclopediaService/AddPictureToServer", ReplyAction="http://tempuri.org/IEncyclopediaService/AddPictureToServerResponse")]
         void AddPictureToServer(string sDirectoryCode, System.IO.MemoryStream sPicture);
@@ -531,12 +531,12 @@ namespace WindowsFormsApp1.ServiceReference1 {
             return base.Channel.TestCreateWithoutMassiveOnlyMemoryAsync(sDirectoryCode, sNameFullAtricle, sText, sPictures);
         }
         
-        public void EditFullArticle(string sDirectoryCode, WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType createdChangedEncyclopedia) {
-            base.Channel.EditFullArticle(sDirectoryCode, createdChangedEncyclopedia);
+        public void EditFullArticle(string sDirectoryCode, string sFullArtocleCode, string sFullArticleName, string sFullArticleText, string[] sBooks) {
+            base.Channel.EditFullArticle(sDirectoryCode, sFullArtocleCode, sFullArticleName, sFullArticleText, sBooks);
         }
         
-        public System.Threading.Tasks.Task EditFullArticleAsync(string sDirectoryCode, WindowsFormsApp1.ServiceReference1.EncyclopediaArticleType createdChangedEncyclopedia) {
-            return base.Channel.EditFullArticleAsync(sDirectoryCode, createdChangedEncyclopedia);
+        public System.Threading.Tasks.Task EditFullArticleAsync(string sDirectoryCode, string sFullArtocleCode, string sFullArticleName, string sFullArticleText, string[] sBooks) {
+            return base.Channel.EditFullArticleAsync(sDirectoryCode, sFullArtocleCode, sFullArticleName, sFullArticleText, sBooks);
         }
         
         public void AddPictureToServer(string sDirectoryCode, System.IO.MemoryStream sPicture) {

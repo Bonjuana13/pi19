@@ -94,7 +94,10 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="sDirectoryCode" nillable="true" type="xs:string" />
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/L1.WcfServiceLibrary" minOccurs="0" name="createdChangedEncyclopedia" nillable="true" type="q7:EncyclopediaArticleType" />
+        <xs:element minOccurs="0" name="sFullArtocleCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sFullArticleName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sFullArticleText" nillable="true" type="xs:string" />
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="sBooks" nillable="true" type="q7:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

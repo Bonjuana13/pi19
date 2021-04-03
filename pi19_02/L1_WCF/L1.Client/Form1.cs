@@ -21,9 +21,15 @@ namespace WindowsFormsApp1
             InitializeComponent();
 
             //Стартовый размер формы
-            this.Size = new Size(1335, 550);
+            this.Size = new Size(1430, 550);
             //Начальная страничка (чисто дял собственного комфорта)
             tabControl1.SelectedTab = tabPage2;
+
+            //нужные блокировки для начала взаимодействия
+            textBox1.ReadOnly = true;
+            richTextBox2.ReadOnly = true;
+            RTBFullArticle.ReadOnly = true;
+            EditFullArticle_But.Enabled = false;
         }
 
         /// <summary>
@@ -200,8 +206,12 @@ namespace WindowsFormsApp1
                 dataGridView2.Columns["Mark"].HeaderText = "Оценка";
 
                 //очистка других полей
+                textBox1.Text = "";
+                richTextBox2.Text = "";
                 RTBFullArticle.Clear();
                 pictureBox1.Image = null;
+                dataGridView3.Rows.Clear();
+                dataGridView3.Columns.Clear();
             }
             catch
             {
@@ -225,12 +235,13 @@ namespace WindowsFormsApp1
                 string allbooks = "";
                 foreach (var item in encyclopediaArticleType.Books)
                 {
-                    allbooks += item + "\n";
+                    allbooks += item + ";";
                 }
 
-                RTBFullArticle.Text = "Название статьи: " + encyclopediaArticleType.NameArticle +
-                    "\n\n" + "Книги с дополнительной информацией: " + allbooks +
-                    "\n" + "Текст статьи: " + encyclopediaArticleType.MainArticleText;
+                //вывод информации об энциклопедии
+                textBox1.Text = encyclopediaArticleType.NameArticle;
+                richTextBox2.Text = allbooks;
+                RTBFullArticle.Text = encyclopediaArticleType.MainArticleText;
 
                 //Очистка
                 dataGridView3.Rows.Clear();
@@ -310,6 +321,7 @@ namespace WindowsFormsApp1
             sBooks.Add("Ни Сы. Хз кто ваще.");
             sBooks.Add("Вся история российского шоубизнеса. Местные критинки с широчайшего дивана.");
 
+            #region test
             //GetClient().TestCreateWithoutMassiveOnlyMemory("002", "Дурочки и дураки.", "Все идиоты, пидорасы, гондурасы и ваще не понятные типы.", );
             //GetClient().CreateFullArticle("002", "Дурочки и дураки.", "Все идиоты, пидорасы, гондурасы и ваще не понятные типы.", sBooks.ToArray(), byteArray.ToArray());
 
@@ -395,8 +407,65 @@ namespace WindowsFormsApp1
                 maxPictureId++;
                 addImage.Save(@"C:\Users\bonju\Desktop\study\2 курс\pi19\pi19_02\L1_WCF\Bibl2test\002\" + maxPictureId.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             }*/
+            #endregion
         }
 
+        /// <summary>
+        /// Открыть возможность изменить статью
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WantToChangeFullArticle_Click(object sender, EventArgs e)
+        {
+            //открытие возможности изменения
+            textBox1.ReadOnly = false;
+            richTextBox2.ReadOnly = false;
+            RTBFullArticle.ReadOnly = false;
 
+            //кнопка
+            EditFullArticle_But.Enabled = true;
+        }
+
+        /// <summary>
+        /// Изменить статью + сделать сохранения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EditFullArticle_But_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox1.Text != "" && RTBFullArticle.Text != "" && richTextBox2.Text != "")
+                {
+                    //sBooks
+                    List<string> books = new List<string>();
+                    string[] splitBooks = richTextBox2.Text.Split(new char[]{ ';' });
+                    foreach (var item in splitBooks)
+                    {
+                        books.Add(item);
+                    }
+
+                    GetClient().EditFullArticle(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString(),
+                    dataGridView2["NameFileFullArticle", dataGridView2.CurrentRow.Index].Value.ToString(),
+                    textBox1.Text, RTBFullArticle.Text, books.ToArray());
+
+                    //закрытие взаимодействия заново после успешного прохода
+                    textBox1.ReadOnly = true;
+                    richTextBox2.ReadOnly = true;
+                    RTBFullArticle.ReadOnly = true;
+                    EditFullArticle_But.Enabled = false;
+
+                    MessageBox.Show("Статья обновлена успешно!", "Успех!", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Не все поля заполнены.", "Пустота там, где не надо.", MessageBoxButtons.OK);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Что-то явно пошло не по плану.", "Упс...", MessageBoxButtons.OK);
+            }
+        }
     }
 }

@@ -221,10 +221,17 @@ namespace L1.WcfServiceLibrary
         /// </summary>
         /// <param name="sDirectoryCode"></param>
         /// <param name="sFileNameCode"></param>
-        public void EditFullArticle(string sDirectoryCode, EncyclopediaArticleType changedFullArticle)
+        public void EditFullArticle(string sDirectoryCode, string sFullArtocleCode, string sFullArticleName, string sFullArticleText, string[] sBooks)
         {
             EncyclopediaManager pManager = new EncyclopediaManager();
-            pManager.Save(sDirectoryCode, changedFullArticle);
+            //получаем статью исходник
+            EncyclopediaArticleType encyclopediaArticleType = pManager.Load(MainStartFolder, sDirectoryCode, sFullArtocleCode);
+            //перезаписываем часть пунктов и сохраняем
+            encyclopediaArticleType.MainArticleText = sFullArticleText;
+            encyclopediaArticleType.NameArticle = sFullArticleName;
+            encyclopediaArticleType.Books = sBooks;
+            //сохраняем новую статью
+            pManager.Save(Path.Combine(MainStartFolder, sDirectoryCode), encyclopediaArticleType);
         }
     }
 }

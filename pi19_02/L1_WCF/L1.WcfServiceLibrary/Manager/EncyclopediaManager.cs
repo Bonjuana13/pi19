@@ -119,7 +119,7 @@ namespace L1.WcfServiceLibrary.Manager
         /// <param name="pPart"></param>
         public void Save(string sDirectory, EncyclopediaArticleType pPart)
         {
-            Save<EncyclopediaArticleType>(sDirectory, pPart.NameFileWithArticle, pPart);
+            Save<EncyclopediaArticleType>(sDirectory, pPart.NameFileWithArticle + ".json", pPart);
         }
 
         /// <summary>

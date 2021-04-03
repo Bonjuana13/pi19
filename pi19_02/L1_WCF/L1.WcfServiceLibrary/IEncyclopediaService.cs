@@ -73,7 +73,7 @@ namespace L1.WcfServiceLibrary
         /// <param name="sDirectoryCode"></param>
         /// <param name="changedEncyclopedia"></param>
         [OperationContract]
-        void EditFullArticle(string sDirectoryCode, EncyclopediaArticleType createdChangedEncyclopedia);
+        void EditFullArticle(string sDirectoryCode, string sFullArtocleCode, string sFullArticleName, string sFullArticleText, string[] sBooks);
 
         [OperationContract]
         void AddPictureToServer(string sDirectoryCode, MemoryStream sPicture);
